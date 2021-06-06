@@ -3,7 +3,6 @@ Scripts and tools for [Automatic Ripper Machine](https://github.com/automatic-ri
 
  - .abcde.conf - configuration file for abcde audio ripper
  - arm.yml - configuration for ARM itself
- - tracklisting.md - how to get tracklistings if MusicBrainz doesn't have them
  - convert.sh - automated Handbrake conversion and content move with progress indicators
 
 ARM is a great tool to automate ripping CDs and DVDs, and I have added some additional scripts to improve the process (IMHO).
@@ -15,17 +14,22 @@ ARM is a great tool to automate ripping CDs and DVDs, and I have added some addi
  - HandBrakeCLI - for the DVD conversion
  - zenity - for notifications using convert.sh
  - unbuffer - used by zenity output
- - picard - used if the tracklisting isn't available. See [tracklisting.md](./tracklisting.md) for details
+ - picard - used if the tracklisting isn't available
 
-## Processing
-
-### Music CDs
+## Processing Music CDs
 
  1. Put the CD in
  2. When it ejects, the mp3 files, cover art and m3u playlist will be in /home/arm/media/music/mp3/[Artist]/[Album Title]
- 3. If it doesn't pick up the tracklisting, see [tracklisting.md](./tracklisting.md) for details
+ 
+ ### Tracklisting Issues
+ 
+ If it doesn't pick up the tracklisting, see [How to Add Tracklisting](https://musicbrainz.org/doc/How_to_Add_Disc_IDs) for details.
+ 
+ 1. Then delete the /home/arm/abcde.[DISCID] folder 
+ 1. Next, put the disk back in to rip with the corrct tracklisting
+ 2. You can check progress by monitoring /home/arm/logs/music_cd.log
 
-### DVDs
+## Processing DVDs
 
  1. Put the DVD in
  2. When it ejects, the mkv files will be in /home/arm/media/completed
